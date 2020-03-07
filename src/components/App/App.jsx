@@ -17,7 +17,7 @@ export default class App extends Component {
     search = e => {
         e.preventDefault();
         var filter = this.state.query;
-        fetch("http://18.189.195.154:8080/api/search/lyrics?filter=" + filter)
+        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?filter=" + filter)
             .then(
                 (result) => {
                     result.json().then((promise) => {
