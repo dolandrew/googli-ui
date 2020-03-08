@@ -17,7 +17,11 @@ export default class App extends Component {
     search = e => {
         e.preventDefault();
         var filter = this.state.query;
-        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?filter=" + filter)
+        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?filter=" + filter, {
+            headers: {
+              'Access-Control-Allow-Origin': '*'
+            }
+        })
             .then(
                 (result) => {
                     result.json().then((promise) => {
