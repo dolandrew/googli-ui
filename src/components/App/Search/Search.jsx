@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import {DebounceInput} from "react-debounce-input";
 import "./Search.css";
 import {arrayOf, func, shape, string} from "prop-types";
 
@@ -31,10 +32,15 @@ export default class Search extends Component {
     render() {
         return (
             <div>
-                <input className="search-box" type="text" placeholder="search by word or phrase..." value={this.props.query} onChange={this.props.onChange}/>
-                <input className="search-button" type="submit" value="Search" onClick={this.props.onClick}/>
-                <br/>
-                <br/>
+                <DebounceInput
+                    minLength={2}
+                    debounceTimeout={400}
+                    className="search-box"
+                    type="text"
+                    placeholder="search by word or phrase..."
+                    value={this.props.query}
+                    onChange={this.props.onChange}/>
+                <br/><br/>
                 <div style={{paddingLeft: 35 + '%', paddingRight: 35 + '%'}} className="results>">
                     {this.listSongs()}
                 </div>
