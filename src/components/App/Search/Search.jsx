@@ -9,31 +9,35 @@ export default class Search extends Component {
         onClick: func.isRequired,
         songs: arrayOf(shape({
             title: string,
-            link: string
+            link: string,
+            lyricSnippets: arrayOf(string)
         }))
 
     };
 
     listSongs() {
         if (this.props.songs.length > 0) {
-            return this.props.songs.map((d) => <ul key={d.link}><a key={d.link} href={d.link}>{d.name}</a></ul>);
-
+            return this.props.songs.map(d =>
+                <div className="result" key={d.link}>
+                    <a href={d.link}>{d.name}</a>
+                    <br/>
+                    <span dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
+                    <br/>
+                </div>
+            );
         }
     }
 
     render() {
         return (
             <div>
-                <label>
-                    <input
-                        type="text"
-                        value={this.props.query}
-                        onChange={this.props.onChange}
-                    />
-                </label>
+                <input className="search-box" type="text" placeholder="search by word or phrase..." value={this.props.query} onChange={this.props.onChange}/>
+                <input className="search-button" type="submit" value="Search" onClick={this.props.onClick}/>
                 <br/>
-                <input type="submit" value="Search Lyrics" onClick={this.props.onClick}/>
-                {this.listSongs()}
+                <br/>
+                <div style={{paddingLeft: 35 + '%', paddingRight: 35 + '%'}} className="results>">
+                    {this.listSongs()}
+                </div>
             </div>
         );
     }
