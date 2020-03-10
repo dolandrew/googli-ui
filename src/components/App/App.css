@@ -9,29 +9,5 @@
 .App-logo {
     height: 120px;
     display: inline;
-    padding-top: 5em;
-}
-
-.list {
-    list-style: inside;
-}
-
-.App-header {
-    background-color: #222;
-    height: 150px;
-    padding: 20px;
-    color: white;
-}
-
-.App-title {
-    font-size: 1.5em;
-}
-
-.App-intro {
-    font-size: large;
-}
-
-.songs {
-    font-size: large;
-    text-align: left;
+    padding-top: 3em;
 }

@@ -17,15 +17,11 @@ export default class App extends Component {
     search = e => {
         e.preventDefault();
         var filter = this.state.query;
-        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?filter=" + filter, {
-            headers: {
-              'Access-Control-Allow-Origin': '*'
-            }
-        })
+        fetch("http://localhost:8080/api/search/lyrics?filter=" + filter)
             .then(
                 (result) => {
-                    result.json().then((promise) => {
-                        this.setState({songs: promise});
+                    result.json().then((result) => {
+                        this.setState({songs: result});
                     })
                 },
                 (error) => {
@@ -40,7 +36,8 @@ export default class App extends Component {
             <div>
                 <form className="App">
                     <img alt="" className="App-logo" src={logo}/>
-                    <h1>Googli Apparatus</h1>
+                    <br/>
+                    <br/>
                     <Search
                         query={this.state.query}
                         onChange={this.updateSearchQuery}
