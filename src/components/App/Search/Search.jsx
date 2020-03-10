@@ -22,7 +22,7 @@ export default class Search extends Component {
                 <div className="result" key={d.link}>
                     <a href={d.link}>{d.name}</a>
                     <br/>
-                    <span dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
+                    <span className="lyrics" dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
                     <br/>
                 </div>
             );
@@ -41,7 +41,7 @@ export default class Search extends Component {
                     value={this.props.query}
                     onChange={this.props.onChange}/>
                 <br/><br/>
-                <div style={{paddingLeft: 35 + '%', paddingRight: 35 + '%'}} className="results>">
+                <div style={{paddingLeft: 33 + '%', paddingRight: 33 + '%'}} className="results>">
                     {this.listSongs()}
                 </div>
             </div>

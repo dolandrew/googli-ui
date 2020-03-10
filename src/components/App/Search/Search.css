@@ -1,7 +1,7 @@
 .search-box {
     border-radius: 50px;
     text-align: center;
-    min-width: 30%;
+    min-width: 33%;
     display: inline;
     padding: 5px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
@@ -17,4 +17,9 @@ input:focus{
     padding-bottom: 0.5em;
     padding-top: 0.5em;
     text-align: left;
+    font-size: 1em;
+}
+
+.lyrics {
+    font-size: 0.75em;
 }
