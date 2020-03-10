@@ -11,13 +11,13 @@ export default class App extends Component {
     };
 
     updateSearchQuery = e => {
-        this.setState({query: e.target.value});
+        this.setState({query: e.target.value},
+            () => this.search());
     };
 
-    search = e => {
-        e.preventDefault();
+    search() {
         var filter = this.state.query;
-        fetch("http://localhost:8080/api/search/lyrics?filter=" + filter)
+        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?filter=" + filter)
             .then(
                 (result) => {
                     result.json().then((result) => {
