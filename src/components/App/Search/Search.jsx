@@ -37,7 +37,7 @@ export default class Search extends Component {
                     debounceTimeout={400}
                     className="search-box"
                     type="text"
-                    placeholder="search by word or phrase..."
+                    placeholder="type a word or phrase..."
                     value={this.props.query}
                     onChange={this.props.onChange}/>
                 <br/><br/>
