@@ -29,6 +29,20 @@ export default class Search extends Component {
         }
     }
 
+    printResultCount() {
+        if (this.props.query) {
+            if (this.props.songs.length > 0) {
+                return (
+                    <div>{this.props.songs.length} results</div>
+                )
+            } else {
+                return (
+                    <div>no results</div>
+                )
+            }
+        }
+    }
+
     render() {
         return (
             <div>
@@ -42,6 +56,7 @@ export default class Search extends Component {
                     onChange={this.props.onChange}/>
                 <br/><br/>
                 <div style={{paddingLeft: 33 + '%', paddingRight: 33 + '%'}} className="results>">
+                    {this.printResultCount()}
                     {this.listSongs()}
                 </div>
             </div>
