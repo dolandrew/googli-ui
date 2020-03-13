@@ -31,9 +31,13 @@ export default class Search extends Component {
 
     printResultCount() {
         if (this.props.query) {
-            if (this.props.songs.length > 0) {
+            if (this.props.songs.length > 1) {
                 return (
                     <div>{this.props.songs.length} results</div>
+                )
+            } else if (this.props.songs.length > 0) {
+                return (
+                    <div>{this.props.songs.length} result</div>
                 )
             } else {
                 return (
