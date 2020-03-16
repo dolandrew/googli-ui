@@ -34,7 +34,8 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <form className="App">
+                <form className="App"
+                      onSubmit={e => { e.preventDefault(); }}>
                     <img alt="" className="App-logo" src={logo}/>
                     <br/>
                     <br/>
