@@ -20,7 +20,7 @@ export default class Search extends Component {
         if (this.props.songs.length > 0) {
             return this.props.songs.map(d =>
                 <div className="result" key={d.link}>
-                    <a href={d.link} target="_blank">{d.name}</a>
+                    <a href={d.link}>{d.name}</a>
                     <br/>
                     <span className="lyrics" dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
                     <br/>
