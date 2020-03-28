@@ -1,4 +1,4 @@
-name: Build & Test
+name: Test & Build
 on:
   pull_request:
     branches:
@@ -15,8 +15,8 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install & Test
+      - name: Install, Test, Build
         run: |
-          npm install && npm test
+          npm install && npm test && npm run build
         env:
           CI: true
