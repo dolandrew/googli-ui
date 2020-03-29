@@ -17,10 +17,10 @@ export default class Search extends Component {
     };
 
     listSongs() {
-        if (this.props.songs.length > 0) {
+        if (this.props.songs && this.props.songs.length > 0) {
             return this.props.songs.map(d =>
                 <div className="result" key={d.link}>
-                    <a href={d.link}>{d.name}</a>
+                    <a href={d.link} target="_blank" rel="noopener noreferrer">{d.name}</a>
                     <br/>
                     <span className="lyrics" dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
                     <br/>
@@ -52,7 +52,7 @@ export default class Search extends Component {
             <div>
                 <DebounceInput
                     minLength={2}
-                    debounceTimeout={400}
+                    debounceTimeout={800}
                     className="search-box"
                     type="text"
                     placeholder="type a word or phrase..."
