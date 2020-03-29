@@ -6,8 +6,13 @@
     text-align: left;
 }
 
+.counter {
+    font-size: 10.5px;
+    word-break: break-all;
+}
+
 .App-logo {
-    height: 120px;
+    height: 160px;
     display: inline;
     padding-top: 3em;
 }

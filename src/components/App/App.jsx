@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import logo from "./phish-logo.png";
+import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
 import Search from "./Search/Search";
@@ -7,7 +8,8 @@ import Search from "./Search/Search";
 export default class App extends Component {
     state = {
         query: "",
-        songs: [{}]
+        songs: [{}],
+        uuid : uuidv4()
     };
 
     updateSearchQuery = e => {
@@ -17,11 +19,16 @@ export default class App extends Component {
 
     search() {
         var filter = this.state.query;
-        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?filter=" + filter)
+        var uuid = this.state.uuid;
+        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?uuid=" + uuid + "&filter=" + filter)
             .then(
                 (result) => {
                     result.json().then((result) => {
-                        this.setState({songs: result});
+                        this.setState({songs: result.songs});
+                        this.setState({searchesPerDay: result.counter.searchesPerDay});
+                        this.setState({searchesPerHour: result.counter.searchesPerHour});
+                        this.setState({searchesPerMinute: result.counter.searchesPerMinute});
+                        this.setState({activeUsers: result.counter.activeUsers});
                     })
                 },
                 (error) => {
@@ -31,14 +38,22 @@ export default class App extends Component {
 
     };
 
+    componentWillMount() {
+        this.search();
+    }
+
     render() {
         return (
             <div>
                 <form className="App"
                       onSubmit={e => { e.preventDefault(); }}>
-                    <img alt="" className="App-logo" src={logo}/>
+                    <img alt="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
+                         title="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
+                         className="App-logo"
+                         src={logo}/>
                     <br/>
                     <br/>
+                    <p className="counter">searches today: {this.state.searchesPerDay} &nbsp;&nbsp;&nbsp; last hour: {this.state.searchesPerHour} &nbsp;&nbsp;last minute: {this.state.searchesPerMinute} &nbsp;&nbsp; active users: {this.state.activeUsers}</p>
                     <Search
                         query={this.state.query}
                         onChange={this.updateSearchQuery}

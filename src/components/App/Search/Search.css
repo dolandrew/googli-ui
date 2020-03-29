@@ -11,13 +11,14 @@
 
 input:focus{
     outline: none;
+    font-size: 16px;
 }
 
 .result {
     padding-bottom: 0.5em;
     padding-top: 0.5em;
     text-align: left;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 .lyrics {
