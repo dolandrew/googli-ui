@@ -27,7 +27,6 @@ export default class App extends Component {
                         this.setState({songs: result.songs});
                         this.setState({searchesPerDay: result.counter.searchesPerDay});
                         this.setState({searchesPerHour: result.counter.searchesPerHour});
-                        this.setState({searchesPerMinute: result.counter.searchesPerMinute});
                         this.setState({activeUsers: result.counter.activeUsers});
                     })
                 },
@@ -53,7 +52,7 @@ export default class App extends Component {
                          src={logo}/>
                     <br/>
                     <br/>
-                    <p className="counter">searches today: {this.state.searchesPerDay} &nbsp;&nbsp;&nbsp; last hour: {this.state.searchesPerHour} &nbsp;&nbsp;last minute: {this.state.searchesPerMinute} &nbsp;&nbsp; active users: {this.state.activeUsers}</p>
+                    <p className="counter">searches today: {this.state.searchesPerDay} &nbsp;&nbsp;&nbsp; last hour: {this.state.searchesPerHour} &nbsp;&nbsp; active users: {this.state.activeUsers}</p>
                     <Search
                         query={this.state.query}
                         onChange={this.updateSearchQuery}
