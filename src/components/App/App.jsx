@@ -1,9 +1,10 @@
 import React, {Component} from "react";
 import logo from "./phish-logo.png";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import "./App.css";
 
 import Search from "./Search/Search";
+import LoginModal from "./Login/LoginModal";
 
 export default class App extends Component {
     state = {
@@ -48,6 +49,7 @@ export default class App extends Component {
             <div>
                 <form className="App"
                       onSubmit={e => { e.preventDefault(); }}>
+                    <LoginModal></LoginModal>
                     <img alt="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
                          title="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
                          className="App-logo"
