@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ca1739b09ed5c0175a0698f44a50b2fa",
+    "revision": "7b064649a3efe7e15c183ff6e67cedaa",
     "url": "/googli-ui/index.html"
   },
   {
