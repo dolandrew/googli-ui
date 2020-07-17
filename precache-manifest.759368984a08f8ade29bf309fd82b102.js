@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0d80ec82ad237d27367bd8e4a90329fe",
+    "revision": "a66a59d53016d403822286d73d7ff7b5",
     "url": "/googli-ui/index.html"
   },
   {
-    "revision": "3034abf74e30f7c6ae4b",
+    "revision": "78ea8f8a16556dc74381",
     "url": "/googli-ui/static/css/main.74d1aa92.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/googli-ui/static/js/2.70fd5af3.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "3034abf74e30f7c6ae4b",
-    "url": "/googli-ui/static/js/main.86d9fc38.chunk.js"
+    "revision": "78ea8f8a16556dc74381",
+    "url": "/googli-ui/static/js/main.bd49191b.chunk.js"
   },
   {
     "revision": "028694c4352096d63ff4",
