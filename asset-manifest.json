@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/googli-ui/static/css/main.74d1aa92.chunk.css",
-    "main.js": "/googli-ui/static/js/main.25dcbe45.chunk.js",
-    "main.js.map": "/googli-ui/static/js/main.25dcbe45.chunk.js.map",
+    "main.js": "/googli-ui/static/js/main.86d9fc38.chunk.js",
+    "main.js.map": "/googli-ui/static/js/main.86d9fc38.chunk.js.map",
     "runtime-main.js": "/googli-ui/static/js/runtime-main.2475e9fd.js",
     "runtime-main.js.map": "/googli-ui/static/js/runtime-main.2475e9fd.js.map",
     "static/js/2.70fd5af3.chunk.js": "/googli-ui/static/js/2.70fd5af3.chunk.js",
     "static/js/2.70fd5af3.chunk.js.map": "/googli-ui/static/js/2.70fd5af3.chunk.js.map",
     "index.html": "/googli-ui/index.html",
-    "precache-manifest.9e0d96861ed76631c36da489e7d1a75f.js": "/googli-ui/precache-manifest.9e0d96861ed76631c36da489e7d1a75f.js",
+    "precache-manifest.8eee2f06c4a6093b4a511c28f701eabb.js": "/googli-ui/precache-manifest.8eee2f06c4a6093b4a511c28f701eabb.js",
     "service-worker.js": "/googli-ui/service-worker.js",
     "static/css/main.74d1aa92.chunk.css.map": "/googli-ui/static/css/main.74d1aa92.chunk.css.map",
     "static/js/2.70fd5af3.chunk.js.LICENSE.txt": "/googli-ui/static/js/2.70fd5af3.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.2475e9fd.js",
     "static/js/2.70fd5af3.chunk.js",
     "static/css/main.74d1aa92.chunk.css",
-    "static/js/main.25dcbe45.chunk.js"
+    "static/js/main.86d9fc38.chunk.js"
   ]
 }
