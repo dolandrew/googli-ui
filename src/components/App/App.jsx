@@ -20,7 +20,7 @@ export default class App extends Component {
     search() {
         var filter = this.state.query;
         var uuid = this.state.uuid;
-        fetch("http://googli-apparatus-434501925.us-east-2.elb.amazonaws.com:8080/api/search/lyrics?uuid=" + uuid + "&filter=" + filter)
+        fetch("https://googli-apparatus-backend.herokuapp.com/api/search/lyrics?uuid=" + uuid + "&filter=" + filter)
             .then(
                 (result) => {
                     result.json().then((result) => {
