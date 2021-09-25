@@ -25,11 +25,11 @@ export default class App extends Component {
                 (result) => {
                     result.json().then((result) => {
                         this.setState({songs: result.songs});
-                        this.setState({searchesPerDay: result.counter.searchesPerDay});
 
-//Commented these out since they are irrelevant with the removal of their HTML element
+                        //Commented these out since they are irrelevant with the removal of their HTML element
                         //this.setState({searchesPerHour: result.counter.searchesPerHour});
                         //this.setState({activeUsers: result.counter.activeUsers});
+                        //this.setState({searchesPerDay: result.counter.searchesPerDay});
                     })
                 },
                 (error) => {
@@ -54,9 +54,6 @@ export default class App extends Component {
                          src={logo}/>
                     <br/>
                     <br/>
-
-{/* Removed searcehs per hour and active users from the counter */}
-                    <p className="counter">searches today: {this.state.searchesPerDay}</p>
 
                     <Search
                         query={this.state.query}
