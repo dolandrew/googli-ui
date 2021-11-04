@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {DebounceInput} from "react-debounce-input";
 import "./Search.css";
-import {arrayOf, func, shape, string} from "prop-types";
+import {arrayOf, func, shape, string, bool} from "prop-types";
 
 export default class Search extends Component {
     static propTypes = {
@@ -12,7 +12,8 @@ export default class Search extends Component {
             title: string,
             link: string,
             lyricSnippets: arrayOf(string)
-        }))
+        })),
+        searching: bool
 
     };
 
@@ -30,7 +31,7 @@ export default class Search extends Component {
     }
 
     printResultCount() {
-        if (this.props.query) {
+        if (this.props.query && this.props.songs) {
             if (this.props.songs.length > 1) {
                 return (
                     <div>{this.props.songs.length} results</div>
@@ -39,7 +40,7 @@ export default class Search extends Component {
                 return (
                     <div>{this.props.songs.length} result</div>
                 )
-            } else {
+              } else if (this.props.songs.length == 0) {
                 return (
                     <div>no results</div>
                 )

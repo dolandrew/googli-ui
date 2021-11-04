@@ -20,16 +20,12 @@ export default class App extends Component {
     search() {
         var filter = this.state.query;
         var uuid = this.state.uuid;
+        this.setState({songs: null});
         fetch("https://googli-apparatus-backend.herokuapp.com/api/search/lyrics?uuid=" + uuid + "&filter=" + filter)
             .then(
                 (result) => {
                     result.json().then((result) => {
                         this.setState({songs: result.songs});
-
-                        //Commented these out since they are irrelevant with the removal of their HTML element
-                        //this.setState({searchesPerHour: result.counter.searchesPerHour});
-                        //this.setState({activeUsers: result.counter.activeUsers});
-                        //this.setState({searchesPerDay: result.counter.searchesPerDay});
                     })
                 },
                 (error) => {
