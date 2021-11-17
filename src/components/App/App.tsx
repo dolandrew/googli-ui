@@ -12,7 +12,6 @@ import GoogliResponse from "../../interfaces/GoogliResponse";
 const App = () => {
   const [query, setQuery] = useState<string>('');
   const [songs, setSongs] = useState<Song[]>([]);
-  const [uuid, setUuid] = useState<string>(uuidv4());
 
   const updateSearchQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -21,9 +20,9 @@ const App = () => {
 
   const search = () => {
     const filter = query;
-    const id = uuid;
+    const uuid = uuidv4();
     setSongs([]);
-    fetch("https://googli-apparatus-backend.herokuapp.com/api/search/lyrics?uuid=" + id + "&filter=" + filter)
+    fetch("https://googli-apparatus-backend.herokuapp.com/api/search/lyrics?uuid=" + uuid + "&filter=" + filter)
       .then(
         (response) => {
           response.json().then((result: GoogliResponse) => {
@@ -39,7 +38,7 @@ const App = () => {
 
   useEffect(() => {
     search();
-  }, [query])
+  }, [query]);
 
   return (
     <div>
