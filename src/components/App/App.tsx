@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 // @ts-ignore
-import logo from "./phish-logo.png";
+import logo from "../../images/phish-logo.png";
+// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
@@ -8,14 +9,15 @@ import "./App.css";
 import Search from "./Search/Search.jsx";
 import Song from "../../interfaces/Song";
 import GoogliResponse from "../../interfaces/GoogliResponse";
+import { DarkThemeIcon, LightThemeIcon } from "../../images";
 
 const App = () => {
   const [query, setQuery] = useState<string>('');
   const [songs, setSongs] = useState<Song[]>([]);
-  const [theme, setTheme] = useState<string>('');
+  const [theme, setTheme] = useState<string>('#FFFFFF');
 
   const toggleTheme = () => {
-    if (theme === '' || '#FFFFFF') {
+    if (theme === '#FFFFFF') {
       setTheme('#1E1E1E');
     }
     if (theme ==='#1E1E1E') {
@@ -56,7 +58,12 @@ const App = () => {
 
   return (
     <div style={{background: theme}}>
-      <button onClick={toggleTheme}>Toggle mode</button>
+      { theme === '#1E1E1E' ?
+        <LightThemeIcon onClick={toggleTheme} />
+        :
+        <DarkThemeIcon onClick={toggleTheme} />
+      }
+
       <form className="App"
             onSubmit={e => { e.preventDefault(); }}>
         <img alt="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
