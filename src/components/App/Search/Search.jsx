@@ -13,14 +13,17 @@ export default class Search extends Component {
             link: string,
             lyricSnippets: arrayOf(string)
         })),
-        searching: bool
+        searching: bool,
+      textTheme: string
 
     };
+
+
 
     listSongs() {
         if (this.props.songs && this.props.songs.length > 0 && this.props.query.length > 0) {
             return this.props.songs.map(d =>
-                <div className="result" key={d.link}>
+                <div className="result" style={{color: this.props.textTheme}}key={d.link}>
                     <a href={d.link} target="_blank" rel="noopener noreferrer">{d.name}</a>
                     <br/>
                     <span className="lyrics" dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
@@ -34,15 +37,15 @@ export default class Search extends Component {
         if (this.props.query && this.props.songs) {
             if (this.props.songs.length > 1) {
                 return (
-                    <div>{this.props.songs.length} results</div>
+                    <div style={{color: this.props.textTheme}}>{this.props.songs.length} results</div>
                 )
             } else if (this.props.songs.length > 0) {
                 return (
-                    <div>{this.props.songs.length} result</div>
+                    <div style={{color: this.props.textTheme}}>{this.props.songs.length} result</div>
                 )
               } else if (this.props.songs.length == 0) {
                 return (
-                    <div>no results</div>
+                    <div style={{color: this.props.textTheme}}>no results</div>
                 )
             }
         }
