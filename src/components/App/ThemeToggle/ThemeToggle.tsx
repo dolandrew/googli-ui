@@ -20,9 +20,9 @@ const ThemeToggle = ({theme, setTheme}: Props) => {
   return (
     <>
       { theme === '#1E1E1E' ?
-        <LightThemeIcon onClick={toggleTheme} />
+        <LightThemeIcon data-testid='light-theme-toggle' onClick={toggleTheme} />
         :
-        <DarkThemeIcon onClick={toggleTheme} />
+        <DarkThemeIcon data-testid='dark-theme-toggle' onClick={toggleTheme} />
       }
     </>
   );
