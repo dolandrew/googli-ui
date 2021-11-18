@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, {useState, useEffect} from "react";
 // @ts-ignore
 import logo from "./phish-logo.png";
