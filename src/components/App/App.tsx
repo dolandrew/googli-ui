@@ -9,25 +9,18 @@ import "./App.css";
 import Search from "./Search/Search.jsx";
 import Song from "../../interfaces/Song";
 import GoogliResponse from "../../interfaces/GoogliResponse";
-import { DarkThemeIcon, LightThemeIcon } from "../../images";
+import ThemeToggle from "./ThemeToggle/ThemeToggle";
 
 const App = () => {
   const [query, setQuery] = useState<string>('');
   const [songs, setSongs] = useState<Song[]>([]);
   const [theme, setTheme] = useState<string>('#FFFFFF');
 
-  const toggleTheme = () => {
-    if (theme === '#FFFFFF') {
-      setTheme('#1E1E1E');
-    }
-    if (theme ==='#1E1E1E') {
-      setTheme('#FFFFFF');
-    }
-  }
-
   let textTheme;
+  theme === '#1E1E1E' ? textTheme = '#FFFFFF' : textTheme = '#1E1E1E';
 
-  theme === '#1E1E1E' ? textTheme = '#FFFFFF' : textTheme = '#1E1E1E'
+  let linkStyles
+  theme === '#1E1E1E' ? linkStyles = '#F2F2F2' : '';
 
   const updateSearchQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
@@ -58,12 +51,7 @@ const App = () => {
 
   return (
     <div style={{background: theme}}>
-      { theme === '#1E1E1E' ?
-        <LightThemeIcon onClick={toggleTheme} />
-        :
-        <DarkThemeIcon onClick={toggleTheme} />
-      }
-
+      <ThemeToggle theme={theme} setTheme={setTheme} />
       <form className="App"
             onSubmit={e => { e.preventDefault(); }}>
         <img alt="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
@@ -79,6 +67,7 @@ const App = () => {
           onClick={search}
           songs={songs}
           textTheme={textTheme}
+          linkStyles={linkStyles}
         />
       </form>
     </div>
