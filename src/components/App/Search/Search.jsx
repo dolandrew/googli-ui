@@ -14,9 +14,10 @@ export default class Search extends Component {
             lyricSnippets: arrayOf(string)
         })),
         searching: bool,
-      textTheme: string
-
+      textTheme: string,
+      linkStyles: string,
     };
+
 
 
 
@@ -24,7 +25,7 @@ export default class Search extends Component {
         if (this.props.songs && this.props.songs.length > 0 && this.props.query.length > 0) {
             return this.props.songs.map(d =>
                 <div className="result" style={{color: this.props.textTheme}}key={d.link}>
-                    <a href={d.link} target="_blank" rel="noopener noreferrer">{d.name}</a>
+                    <a style={{color: this.props.linkStyles}} href={d.link} target="_blank" rel="noopener noreferrer">{d.name}</a>
                     <br/>
                     <span className="lyrics" dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
                     <br/>
