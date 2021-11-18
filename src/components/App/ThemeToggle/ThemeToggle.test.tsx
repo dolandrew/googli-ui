@@ -32,5 +32,5 @@ test('clicking the light theme toggle button switches the button', async () => {
 
   userEvent.click(lightThemeToggle);
 
-
+  //  todo - assert that the correct button appears
 });
