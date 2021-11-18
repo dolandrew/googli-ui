@@ -1,6 +1,8 @@
+// @ts-ignore
 import React, {useState, useEffect} from "react";
 // @ts-ignore
 import logo from "./phish-logo.png";
+// @ts-ignore
 import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
