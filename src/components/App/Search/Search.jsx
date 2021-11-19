@@ -24,7 +24,12 @@ export default class Search extends Component {
     listSongs() {
         if (this.props.songs && this.props.songs.length > 0 && this.props.query.length > 0) {
             return this.props.songs.map(d =>
-                <div className="result" style={{color: this.props.textTheme}}key={d.link}>
+                <div
+                  className="result"
+                  style={{color: this.props.textTheme}}
+                  key={d.link}
+                  data-testid="song-list"
+                >
                     <a style={{color: this.props.linkStyles}} href={d.link} target="_blank" rel="noopener noreferrer">{d.name}</a>
                     <br/>
                     <span className="lyrics" dangerouslySetInnerHTML={{__html: d.lyricSnippets}}></span>
@@ -38,15 +43,29 @@ export default class Search extends Component {
         if (this.props.query && this.props.songs) {
             if (this.props.songs.length > 1) {
                 return (
-                    <div style={{color: this.props.textTheme}}>{this.props.songs.length} results</div>
+                    <div
+                      data-testid='song-count'
+                      style={{color: this.props.textTheme}}
+                    >
+                      {this.props.songs.length} results
+                    </div>
                 )
             } else if (this.props.songs.length > 0) {
                 return (
-                    <div style={{color: this.props.textTheme}}>{this.props.songs.length} result</div>
+                    <div
+                      data-testid='song-count'
+                      style={{color: this.props.textTheme}}
+                    >
+                      {this.props.songs.length} result
+                    </div>
                 )
               } else if (this.props.songs.length == 0) {
                 return (
-                    <div style={{color: this.props.textTheme}}>no results</div>
+                    <div
+                      data-testid='song-count'
+                      style={{color: this.props.textTheme}}
+                    >no results
+                    </div>
                 )
             }
         }
@@ -56,13 +75,15 @@ export default class Search extends Component {
         return (
             <div>
                 <DebounceInput
+                    data-testid="search-input"
                     minLength={2}
                     debounceTimeout={800}
                     className="search-box"
                     type="text"
                     placeholder="type a word or phrase..."
                     value={this.props.query}
-                    onChange={this.props.onChange}/>
+                    onChange={this.props.onChange}
+                />
                 <br/><br/>
                 <div style={{paddingLeft: 33 + '%', paddingRight: 33 + '%'}} className="results>">
                     {this.printResultCount()}
