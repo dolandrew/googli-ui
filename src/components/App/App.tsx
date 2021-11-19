@@ -9,8 +9,8 @@ import "./App.css";
 // @ts-ignore
 import Search from "./Search/Search.jsx";
 import Song from "../../interfaces/Song";
-import GoogliResponse from "../../interfaces/GoogliResponse";
 import ThemeToggle from "./ThemeToggle/ThemeToggle";
+import fetchSongs from "../../services/fetchSongs";
 
 const App = () => {
   const [query, setQuery] = useState<string>('');
@@ -32,18 +32,7 @@ const App = () => {
     const filter = query;
     const uuid = uuidv4();
     setSongs([]);
-    fetch("https://googli-apparatus-backend.herokuapp.com/api/search/lyrics?uuid=" + uuid + "&filter=" + filter)
-      .then(
-        (response) => {
-          response.json().then((result: GoogliResponse) => {
-            setSongs(result.songs);
-          })
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-
+    fetchSongs(setSongs, uuid, filter);
   };
 
   useEffect(() => {
