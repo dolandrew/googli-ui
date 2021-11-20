@@ -1,10 +1,11 @@
 import ThemeToggle from "./ThemeToggle";
-import { render, fireEvent } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
+import Theme from "../../../interfaces/Theme";
 
 const setTheme = jest.fn()
 
 test('clicking the dark theme toggle button fires an event', () => {
-  const { getByTestId } = render(<ThemeToggle theme={'#FFFFFF'} setTheme={setTheme} />);
+  const { getByTestId } = render(<ThemeToggle theme={Theme.BG_LIGHT} setTheme={setTheme} />);
   const darkThemeToggle = getByTestId('dark-theme-toggle');
 
   fireEvent.click(darkThemeToggle);
@@ -13,7 +14,7 @@ test('clicking the dark theme toggle button fires an event', () => {
 });
 
 test('clicking the light theme toggle button fires an event', () => {
-  const { getByTestId } = render(<ThemeToggle theme={'#1E1E1E'} setTheme={setTheme} />);
+  const { getByTestId } = render(<ThemeToggle theme={Theme.BG_DARK} setTheme={setTheme} />);
   const lightThemeToggle = getByTestId('light-theme-toggle');
 
   fireEvent.click(lightThemeToggle);
