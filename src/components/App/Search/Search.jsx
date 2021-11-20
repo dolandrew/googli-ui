@@ -18,9 +18,6 @@ export default class Search extends Component {
       linkStyles: string,
     };
 
-
-
-
     listSongs() {
         if (this.props.songs && this.props.songs.length > 0 && this.props.query.length > 0) {
             return this.props.songs.map(d =>
