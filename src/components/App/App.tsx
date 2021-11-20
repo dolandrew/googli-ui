@@ -10,17 +10,15 @@ import Search from "./Search/Search.jsx";
 import Song from "../../interfaces/Song";
 import GoogliResponse from "../../interfaces/GoogliResponse";
 import ThemeToggle from "./ThemeToggle/ThemeToggle";
+import Theme from "../../interfaces/Theme";
+import useThemeToggle from "../../services/useThemeToggle";
 
 const App = () => {
   const [query, setQuery] = useState<string>('');
   const [songs, setSongs] = useState<Song[]>([]);
-  const [theme, setTheme] = useState<string>('#FFFFFF');
+  const [theme, setTheme] = useState<Theme.BG_LIGHT | Theme.BG_DARK>(Theme.BG_LIGHT);
 
-  let textTheme;
-  theme === '#1E1E1E' ? textTheme = '#FFFFFF' : textTheme = '#1E1E1E';
-
-  let linkStyles
-  theme === '#1E1E1E' ? linkStyles = '#F2F2F2' : '';
+  const { textTheme, linkStyles } = useThemeToggle(theme);
 
   const updateSearchQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);

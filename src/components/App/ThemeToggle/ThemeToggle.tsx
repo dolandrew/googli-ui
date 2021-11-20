@@ -1,25 +1,26 @@
 import React from "react";
 import { DarkThemeIcon, LightThemeIcon } from "../../../images";
+import Theme from "../../../interfaces/Theme";
 
 interface Props {
-  theme: string;
-  setTheme: (theme: string) => void;
+  theme: Theme.BG_DARK | Theme.BG_LIGHT;
+  setTheme: (theme: Theme.BG_DARK | Theme.BG_LIGHT) => void;
 }
 
 const ThemeToggle = ({theme, setTheme}: Props) => {
 
   const toggleTheme = () => {
-    if (theme === '#FFFFFF') {
-      setTheme('#1E1E1E');
+    if (theme === Theme.BG_LIGHT) {
+      setTheme(Theme.BG_DARK);
     }
-    if (theme ==='#1E1E1E') {
-      setTheme('#FFFFFF');
+    if (theme === Theme.BG_DARK) {
+      setTheme(Theme.BG_LIGHT);
     }
   }
 
   return (
     <>
-      { theme === '#1E1E1E' ?
+      { theme === Theme.BG_DARK ?
         <LightThemeIcon data-testid='light-theme-toggle' onClick={toggleTheme} />
         :
         <DarkThemeIcon data-testid='dark-theme-toggle' onClick={toggleTheme} />
