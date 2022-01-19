@@ -19,6 +19,7 @@ export default class Search extends Component {
 
     listSongs() {
         if (this.props.songs && this.props.songs.length > 0 && this.props.query.length > 0) {
+            debugger;
             return this.props.songs.map(d =>
                 <div className="result" key={d.link}>
                     <a href={d.link} target="_blank" rel="noopener noreferrer">{d.name}</a>
@@ -31,7 +32,7 @@ export default class Search extends Component {
     }
 
     printResultCount() {
-        if (this.props.query && this.props.songs) {
+        if (this.props.query && this.props.songs.length > 0) {
             if (this.props.songs.length > 1) {
                 return (
                     <div>{this.props.songs.length} results</div>
