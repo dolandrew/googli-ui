@@ -13,7 +13,8 @@ export default class Search extends Component {
             link: string,
             lyricSnippets: arrayOf(string)
         })),
-        searching: bool,
+        searched: string.isRequired,
+        time: string.isRequired,
       textTheme: string,
       linkStyles: string,
     };
@@ -37,14 +38,14 @@ export default class Search extends Component {
     }
 
     printResultCount() {
-        if (this.props.query && this.props.songs) {
+        if (this.props.query && this.props.searched === "true") {
             if (this.props.songs.length > 1) {
                 return (
                     <div
                       data-testid='song-count'
                       style={{color: this.props.textTheme}}
                     >
-                      {this.props.songs.length} results
+                      {this.props.songs.length} results in {this.props.time}s
                     </div>
                 )
             } else if (this.props.songs.length > 0) {
@@ -53,7 +54,7 @@ export default class Search extends Component {
                       data-testid='song-count'
                       style={{color: this.props.textTheme}}
                     >
-                      {this.props.songs.length} result
+                      {this.props.songs.length} result in {this.props.time}s
                     </div>
                 )
               } else if (this.props.songs.length == 0) {
@@ -61,7 +62,7 @@ export default class Search extends Component {
                     <div
                       data-testid='song-count'
                       style={{color: this.props.textTheme}}
-                    >no results
+                    >no results in {this.props.time}s
                     </div>
                 )
             }
