@@ -16,24 +16,30 @@ import useThemeToggle from "../../services/useThemeToggle";
 const App = () => {
   const [query, setQuery] = useState<string>('');
   const [songs, setSongs] = useState<Song[]>([]);
+  const [time, setTime] = useState<string>('');
+  const [searched, setSearched] = useState<string>('');
   const [theme, setTheme] = useState<Theme.BG_LIGHT | Theme.BG_DARK>(Theme.BG_LIGHT);
 
   const { textTheme, linkStyles } = useThemeToggle(theme);
 
   const updateSearchQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(e.target.value);
-    search();
+    search(e.target.value);
   };
 
-  const search = () => {
-    const filter = query;
-    const id = uuid;
+  const search = (query: string) => {
+    const id = uuidv4();
+    var beforeSearch = Date.now();
     setSongs([]);
-    fetch("https://googli-apparatus-backend.herokuapp.com/api/search/lyrics?uuid=" + id + "&filter=" + filter)
+    setSearched("");
+    fetch("https://googli-apparatus-backend.herokuapp.com/api/search/lyrics?uuid=" + id + "&filter=" + query)
       .then(
         (response) => {
           response.json().then((result: GoogliResponse) => {
+            var afterSearch = Date.now();
+            setTime(((afterSearch - beforeSearch) / 1000).toString())
             setSongs(result.songs);
+            setSearched("true");
           })
         },
         (error) => {
@@ -42,10 +48,6 @@ const App = () => {
       );
 
   };
-
-  useEffect(() => {
-    search();
-  }, [query])
 
   return (
     <div style={{background: theme}}>
@@ -61,6 +63,8 @@ const App = () => {
 
         <Search
           query={query}
+          searched={searched}
+          time={time}
           onChange={updateSearchQuery}
           onClick={search}
           songs={songs}
