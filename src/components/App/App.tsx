@@ -13,11 +13,14 @@ import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import Theme from "../../interfaces/Theme";
 import useThemeToggle from "../../services/useThemeToggle";
 import SimilarResult from "../../interfaces/SimilarResult";
+import SimilarListItem from "../SimilarListItem/SimilarListItem";
+import { Checkbox } from "@material-ui/core";
 
 const App = () => {
   const [query, setQuery] = useState<string>('');
   const [songs, setSongs] = useState<Song[]>([]);
-  const [similarSongs, setSimilarSongs] = useState<SimilarResult[]>([]);
+  const [similarResults, setSimilarResults] = useState<SimilarResult[]>([]);
+  const [showSimilarResult, setShowSimilarResults] = useState<boolean>(false);
   const [time, setTime] = useState<string>('');
   const [searched, setSearched] = useState<string>('');
   const [theme, setTheme] = useState<Theme.BG_LIGHT | Theme.BG_DARK>(Theme.BG_LIGHT);
@@ -42,7 +45,7 @@ const App = () => {
             setTime(((afterSearch - beforeSearch) / 1000).toString())
             setSongs(result.songs);
             setSearched("true");
-            setSimilarSongs(result.similarResults)
+            setSimilarResults(result.similarResults)
           })
         },
         (error) => {
@@ -52,21 +55,22 @@ const App = () => {
 
   };
 
-  const searchSimilar = (similarSong: string) => {
-    setQuery(similarSong);
-    search(similarSong);
+  const toggleSimilarSearch = () => {
+    setShowSimilarResults(!showSimilarResult);
   };
 
-  const displayedSimilarSongs = similarSongs.map((song: SimilarResult, index: number) => (
-    <>
-      <li
-        key={index}
-        style={{listStyleType: 'none'}}
-        onClick={() => searchSimilar(song.title)}
-      >
-        The word {song.title} appears in {song.count} {song.count === 1 ? 'song': 'songs' }
-      </li>
-    </>
+  const searchSimilar = (similarResult: string) => {
+    setQuery(similarResult);
+    search(similarResult);
+  };
+
+  const displayedSimilarResults = similarResults.map((result: SimilarResult, index: number) => (
+    <SimilarListItem
+      index={index}
+      result={result}
+      searchSimilar={searchSimilar}
+      textTheme={textTheme}
+    />
   ));
 
   return (
@@ -80,7 +84,7 @@ const App = () => {
              src={logo}/>
         <br/>
         <br/>
-        {displayedSimilarSongs}
+        {showSimilarResult && displayedSimilarResults}
         <Search
           query={query}
           searched={searched}
@@ -91,6 +95,7 @@ const App = () => {
           textTheme={textTheme}
           linkStyles={linkStyles}
         />
+        <Checkbox onChange={() => toggleSimilarSearch()} />
       </form>
     </div>
   );
