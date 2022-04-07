@@ -6,10 +6,10 @@ import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
 // @ts-ignore
-import Search from "./Search/Search.jsx";
+import Search from "../Search/Search.jsx";
 import Song from "../../interfaces/Song";
 import GoogliResponse from "../../interfaces/GoogliResponse";
-import ThemeToggle from "./ThemeToggle/ThemeToggle";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import Theme from "../../interfaces/Theme";
 import useThemeToggle from "../../services/useThemeToggle";
 

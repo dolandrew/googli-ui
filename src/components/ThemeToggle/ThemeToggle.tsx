@@ -1,6 +1,6 @@
 import React from "react";
-import { DarkThemeIcon, LightThemeIcon } from "../../../images";
-import Theme from "../../../interfaces/Theme";
+import { DarkThemeIcon, LightThemeIcon } from "../../images";
+import Theme from "../../interfaces/Theme";
 
 interface Props {
   theme: Theme.BG_DARK | Theme.BG_LIGHT;
