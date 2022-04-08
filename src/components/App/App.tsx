@@ -81,7 +81,9 @@ const App = () => {
         <img alt="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
              title="Questions, ideas, or bugs? Email dolandrew@gmail.com or go to github.com/dolandrew. Enjoy!"
              className="App-logo"
-             src={logo}/>
+             src={logo}
+             data-testid="logo"
+        />
         <br/>
         <br/>
         {showSimilarResult && displayedSimilarResults}

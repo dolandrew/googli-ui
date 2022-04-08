@@ -90,6 +90,7 @@ export default class Search extends Component {
                   onChange={() => this.props.toggleSimilarSearch()}
                   style={{color: this.props.linkStyles}}
                   color="success"
+                  data-testid="toggle-similar-results"
                 />}
                   label='Include similar results?'
                 />
