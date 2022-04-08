@@ -94,8 +94,8 @@ const App = () => {
           songs={songs}
           textTheme={textTheme}
           linkStyles={linkStyles}
+          toggleSimilarSearch={toggleSimilarSearch}
         />
-        <Checkbox onChange={() => toggleSimilarSearch()} />
       </form>
     </div>
   );

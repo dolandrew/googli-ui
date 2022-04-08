@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {DebounceInput} from "react-debounce-input";
 import "./Search.css";
 import {arrayOf, func, shape, string, bool} from "prop-types";
+import {Checkbox, FormControlLabel} from "@material-ui/core";
 
 export default class Search extends Component {
     static propTypes = {
@@ -17,6 +18,7 @@ export default class Search extends Component {
         time: string.isRequired,
       textTheme: string,
       linkStyles: string,
+      toggleSimilarSearch: func.isRequired,
     };
 
     listSongs() {
@@ -81,6 +83,15 @@ export default class Search extends Component {
                     placeholder="type a word or phrase..."
                     value={this.props.query}
                     onChange={this.props.onChange}
+                />
+                <FormControlLabel control={
+                  <Checkbox
+                  label="Include similar results"
+                  onChange={() => this.props.toggleSimilarSearch()}
+                  style={{color: this.props.linkStyles}}
+                  color="success"
+                />}
+                  label='Include similar results?'
                 />
                 <br/><br/>
                 <div style={{paddingLeft: 33 + '%', paddingRight: 33 + '%'}} className="results>">
