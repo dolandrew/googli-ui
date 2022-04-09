@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Song from "../../interfaces/Song";
 import SimilarResult from "../../interfaces/SimilarResult";
 import { DebounceInput } from "react-debounce-input";
@@ -20,6 +20,7 @@ interface Props {
 
 const Search = (props: Props) => {
   const { query, onChange, onClick, searchSimilar, songs, searched, time, textTheme, linkStyles, similarResults} = props;
+  const [showFullSimilar, setShowFullSimilar] = useState<boolean>(false);
 
   const listSongs = () => {
     if (songs && songs.length > 0 && query.length > 0) {
@@ -71,8 +72,12 @@ const Search = (props: Props) => {
     }
   }
 
+  const toggleFullSimilar = () => {
+    setShowFullSimilar(!showFullSimilar);
+  }
+
   const displayedSimilarResults = () => {
-    return similarResults.map((result, index) => (
+    const results = similarResults.map((result, index) => (
       <SimilarListItem
         index={index}
         result={result}
@@ -80,6 +85,13 @@ const Search = (props: Props) => {
         searchSimilar={searchSimilar}
       />
     ))
+
+    return (
+      <div>
+        {results}
+        <p onClick={() => toggleFullSimilar()}>Show less</p>
+      </div>
+    )
   }
 
   const someSimilarResults = () => {
@@ -95,7 +107,7 @@ const Search = (props: Props) => {
     return (
       <div>
         {topResult}
-        {topResult.length > 0 && <span>See More</span>}
+        {topResult.length > 0 && <span onClick={() => toggleFullSimilar()}>See More</span>}
       </div>
     )
   }
@@ -114,8 +126,8 @@ const Search = (props: Props) => {
       />
       <div style={{paddingTop: '2%', display: 'inline'}}>
         {/*{this.displayedSimilarResults()}*/}
-        {someSimilarResults()}
-
+        {/*{someSimilarResults()}*/}
+        {showFullSimilar ? displayedSimilarResults() : (<div>{someSimilarResults()}</div>)}
       </div>
       <br/><br/>
       <div style={{paddingLeft: '33%', paddingRight: '33%'}} className="results>">
