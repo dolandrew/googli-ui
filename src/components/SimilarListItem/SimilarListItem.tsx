@@ -1,6 +1,5 @@
 import React from "react";
 import SimilarResult from "../../interfaces/SimilarResult";
-import Theme from "../../interfaces/Theme";
 
 interface Props {
   index: number;
@@ -12,13 +11,16 @@ interface Props {
 const SimilarListItem = ({index, result, searchSimilar, textTheme}: Props) => {
 
   return (
-    <li
+    <div style={{display: 'inline', justifyContent: 'center'}}>
+    <span
       key={index}
-      style={{listStyleType: 'none', color: textTheme}}
+      style={{listStyleType: 'none', color: textTheme, paddingRight: '4px'}}
       onClick={() => searchSimilar(result.title)}
     >
-      The word {result.title} appears in {result.count} {result.count === 1 ? 'song': 'songs' }
-    </li>
+      {result.title} ({result.count})
+    </span>
+
+    </div>
   );
 }
 

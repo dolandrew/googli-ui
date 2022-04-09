@@ -20,7 +20,6 @@ const App = () => {
   const [query, setQuery] = useState<string>('');
   const [songs, setSongs] = useState<Song[]>([]);
   const [similarResults, setSimilarResults] = useState<SimilarResult[]>([]);
-  const [showSimilarResult, setShowSimilarResults] = useState<boolean>(false);
   const [time, setTime] = useState<string>('');
   const [searched, setSearched] = useState<string>('');
   const [theme, setTheme] = useState<Theme.BG_LIGHT | Theme.BG_DARK>(Theme.BG_LIGHT);
@@ -55,10 +54,6 @@ const App = () => {
 
   };
 
-  const toggleSimilarSearch = () => {
-    setShowSimilarResults(!showSimilarResult);
-  };
-
   const searchSimilar = (similarResult: string) => {
     setQuery(similarResult);
     search(similarResult);
@@ -86,7 +81,6 @@ const App = () => {
         />
         <br/>
         <br/>
-        {showSimilarResult && displayedSimilarResults}
         <Search
           query={query}
           searched={searched}
@@ -96,7 +90,8 @@ const App = () => {
           songs={songs}
           textTheme={textTheme}
           linkStyles={linkStyles}
-          toggleSimilarSearch={toggleSimilarSearch}
+          similarResults={similarResults}
+          searchSimilar={searchSimilar}
         />
       </form>
     </div>
