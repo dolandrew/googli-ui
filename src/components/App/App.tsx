@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 // @ts-ignore
 import logo from "../../images/phish-logo.png";
 // @ts-ignore
@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import "./App.css";
 
 // @ts-ignore
-import Search from "../Search/Search.jsx";
+import Search from "../Search/Search.tsx";
 import Song from "../../interfaces/Song";
 import GoogliResponse from "../../interfaces/GoogliResponse";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
@@ -14,7 +14,6 @@ import Theme from "../../interfaces/Theme";
 import useThemeToggle from "../../services/useThemeToggle";
 import SimilarResult from "../../interfaces/SimilarResult";
 import SimilarListItem from "../SimilarListItem/SimilarListItem";
-import { Checkbox } from "@material-ui/core";
 
 const App = () => {
   const [query, setQuery] = useState<string>('');
