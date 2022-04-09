@@ -1,6 +1,6 @@
 import ThemeToggle from "./ThemeToggle";
 import { fireEvent, render } from "@testing-library/react";
-import Theme from "../../../interfaces/Theme";
+import Theme from "../../interfaces/Theme";
 
 const setTheme = jest.fn()
 
